@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eotproposalmockup", "eotproposalmockup\eotproposalmockup.csproj", "{AA673B4C-A88B-4465-BC28-C890DFB7ED82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA673B4C-A88B-4465-BC28-C890DFB7ED82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA673B4C-A88B-4465-BC28-C890DFB7ED82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA673B4C-A88B-4465-BC28-C890DFB7ED82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA673B4C-A88B-4465-BC28-C890DFB7ED82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {84397F86-C44B-441E-81F2-E81AAA0E1B88}
+	EndGlobalSection
+EndGlobal
