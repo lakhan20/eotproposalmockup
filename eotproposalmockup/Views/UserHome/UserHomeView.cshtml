@@ -1,0 +1,31 @@
+﻿
+<style>
+    #addneweot {
+        display: none;
+    }
+</style>
+<div id="addneweot">
+    <button type="button" class="btn btn-primary" id="addNewEot" value="Add New EOT"> Add New </button>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var getroleId = localStorage.getItem("role_id");
+
+        if (getroleId == null) {
+            window.location.href = "/";
+        }
+        else if (getroleId == 2) {
+
+            $('#addneweot').show();
+        }
+
+
+        $("#addNewEot").click(function () {
+            window.location.href = "/EotForm/EotForm";
+        });
+
+
+    });
+</script>

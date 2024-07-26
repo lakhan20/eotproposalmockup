@@ -1,0 +1,71 @@
+﻿<style>
+    .login_page {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center; /* Center the content horizontally */
+    }
+</style>
+
+
+<div class="login_page">
+        <h2>login</h2>
+        <form id="loginform">
+            <div class="mb-3" style="width: 225px;">
+                <label for="user_email" class="visually-hidden">email</label>
+                <input type="text" class="form-control" id="user_email" placeholder="email">
+            </div>
+            <div class="mb-3" style="width: 225px;">
+                <label for="user_password" class="visually-hidden">password</label>
+                <input type="password" class="form-control" id="user_password" placeholder="password">
+            </div>
+            <div class="mb-3" style="width: 225px;">
+                <button type="button" class="btn btn-primary w-100" id="loginSubmit">login</button>
+            </div>
+        </form>
+    </div>
+
+
+<script>
+    $(document).ready(function () {
+
+
+        $("#loginSubmit").click(function () {
+            let loginFormData = new FormData();
+            loginFormData.append("user_email", $("#user_email").val());
+            loginFormData.append("user_password", $("#user_password").val());
+
+            $.ajax({
+                type: "POST",
+                url: "/login/LoginApi",
+                data: loginFormData,
+                processData: false,  // Don't process the data
+                contentType: false,  // Don't set contentType
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.message);
+                        //console.log("response : ", response);
+                        localStorage.setItem("role_id", response.loginResponse.role_id);
+                        var url = "/UserHome/UserHomeView";
+                        window.location.href = url;
+
+                    } else {
+                        alert(response.message);
+                        window.location.href = "/";
+                    }
+                },
+                error: function (err) {
+                    alert("SW");
+                }
+            });
+        });
+
+
+    });
+</script>
+
