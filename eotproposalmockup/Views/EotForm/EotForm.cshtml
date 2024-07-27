@@ -122,10 +122,11 @@
 
 <style>
     .formDiv {
-        border: 1px solid black;
+        border: 4px solid black;
         padding: 20px;
         margin: 20px;
         min-height: 500px;
+        border-radius:50px;
     }
 
     .ifNoticegiven, .ifapplicableforcost {
@@ -189,11 +190,11 @@
                 <div class="row mb-3">
                     <div class="col">
                         <select class="form-select" id="whoseDefault">
-                            <option selected>Select Claiming Default</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option selected value="0">Select Claiming Default</option>
+
                         </select>
+                        <span id="whoseDefault_Error"></span>
+
                     </div>
                     <div class="col">
                         <select class="form-select" id="eotDueTo">
@@ -456,6 +457,36 @@
         if (getroleId == null || getroleId != 2) {
             window.location.href = "/";
         }
+
+
+        //$.get("/ClaimingWhoseDefault/getAllWhoseDefault", (data) => {
+        //    if (data.status) {
+        //        console.log("data", data.whosedefaultlst);
+
+        //    }
+        //    else {
+        //        return;
+        //    }
+        //})
+        $.get("/ClaimingWhoseDefault/getAllWhoseDefault", (data) => {
+            if (data.status) {
+                const selectElement = $('#whoseDefault');
+                data.whosedefaultlst.forEach(item => {
+                    //console.log("item : ", item);
+                    const option = $('<option>', {
+                        id: item.id, // Assuming item has an 'id' property
+                        value: item.whosedefault_id, // Assuming item has a 'value' property
+                        text: item.whosedefault_description // Assuming item has a 'text' property
+                    });
+                    selectElement.append(option);
+                });
+            } else {
+                console.error("Error fetching data");
+            }
+        });
+
+
+
         const today = new Date();
         const yyyy = today.getFullYear();
         let mm = today.getMonth() + 1; // Months start at 0!
@@ -495,7 +526,7 @@
             let delayFrom = new Date($("#delayFrom").val());
             let delayTo = new Date($("#delayTo").val());
 
-            console.log("delayFrom", delayFrom);
+            //console.log("delayFrom", delayFrom);
 
             if (delayFrom == "Invalid Date") {
                 $("#delayFrom_Error").html("Please enter a valid delay from")
@@ -551,11 +582,24 @@
                 $("#briefReason_Error").removeClass("invalid");
 
             }
-            console.log($("#briefReason").val().trim());
-            console.log($("#briefReason").val().trim().length);
+            //console.log($("#briefReason").val().trim());
+            //console.log($("#briefReason").val().trim().length);
 
         })
+        $("#whoseDefault").blur(function () {
 
+            if ($("#whoseDefault").val() == 0) {
+                $("#whoseDefault_Error").html("Please Select Whose default")
+                $("#whoseDefault_Error").addClass("invalid");
+
+                return;
+            }
+            else {
+                $("#whoseDefault_Error").html("")
+                $("#whoseDefault_Error").removeClass("invalid");
+            }
+            //alert("Whose default called"+ $("#whoseDefault").val());
+        });
         
     });
 </script>
