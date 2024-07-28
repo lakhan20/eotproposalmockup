@@ -134,7 +134,11 @@
     }
     .invalid {
         color: red;
+ 
         /*display:none;*/
+    }
+    .eotDueToOtherReasonDiv{
+        display:none;
     }
 </style>
 
@@ -150,45 +154,50 @@
             <form>
 
                 <div class="row mb-4">
-                    <div class="col-2 text-start">
+                    <div class="col text-start">
                         <label for="briefReasonLabel" class="text-left">
                             Brief Reason for EOT
                         </label>
                     </div>
-                    <div class="col-10">
+                    <div class="col-10 text-start">
                         <textarea class="form-control" rows=2 id="briefReason"></textarea>
                         <span class="text-start" id="briefReason_Error"></span>
                     </div>
                 </div>
 
                 @* below div only represents labels of 2nd input rows *@
-                <div class="row mb-1">
-                    <div class="col align-content-md-end text-start">
-                        <label for="briefReason" class="form-label text-left">
-                            EOT Claiming on whose default
-                        </label>
-                    </div>
-                    <div class="col align-content-md-end text-start">
-                        <label for="briefReason" class="form-label text-left">
-                            EOT Due To
-                        </label>
-                    </div>
-                    <div class="col align-content-md-end text-start">
-                        <label for="briefReason" class="form-label text-left">
-                            EOT claiming for Stage
-                        </label>
-                    </div>
-                    <div class="col-2 align-content-md-end text-start">
-                        <label for="briefReason" class="form-label text-left">
-                            Last DPR Deliverable
-                        </label>
-                    </div>
+            <div class="row mb-1">
+                <div class="col align-content-md-end text-start">
+                    <label for="briefReason" class="form-label text-left">
+                        EOT Claiming on whose default
+                    </label>
                 </div>
+                <div class="col align-content-md-end text-start">
+                    <label for="briefReason" class="form-label text-left">
+                        EOT Due To
+                    </label>
+                </div>
+                <div class="eotDueToOtherReasonDiv col align-content-md-end text-start">
+                    <label for="briefReason" class="form-label text-left">
+                      Enter Other Reason
+                    </label>
+                </div>
+                <div class="col align-content-md-end text-start">
+                    <label for="briefReason" class="form-label text-left">
+                        EOT claiming for Stage
+                    </label>
+                </div>
+                <div class="col align-content-md-end text-start">
+                    <label for="briefReason" class="form-label text-left">
+                        Last DPR Deliverable
+                    </label>
+                </div>
+            </div>
 
                 @* below div only represents inputs of 2nd input rows *@
 
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col text-start">
                         <select class="form-select" id="whoseDefault">
                             <option selected value="0">Select Claiming Default</option>
 
@@ -196,35 +205,42 @@
                         <span id="whoseDefault_Error"></span>
 
                     </div>
-                    <div class="col">
+                    <div class="col text-start">
                         <select class="form-select" id="eotDueTo">
-                            <option selected>Select EOT Due To</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="0" selected>Select EOT Due To</option>
+                            <option value="Due to Reason 1">Due to Reason 1</option>
+                            <option value="Due to Reason 2">Due to Reason 2</option>
+                            <option value="Due to Reason 3">Due to Reason 3</option>
+                            <option value="4">Other</option>
+
                         </select>
+                        <span id="eotDueTo_Error"></span>
+
                     </div>
 
-                    @*<div class="col">
-                        <input type="text" class="form-control" />
-                    </div>*@
-                    <div class="col">
+                    <div class="eotDueToOtherReasonDiv col text-start">
+                        <input type="text" class="form-control" id="eotDueToOtherReason" />
+                        <span id="eotDueToOtherReason_Error"></span>
+
+                    </div>
+                    <div class="col text-start">
                         <select class="form-select" id="eotClaimingStage">
-                            <option selected>Select EOT Claiming for stage</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="0" selected>Select EOT Claiming for stage</option>
+                            <option value="One">One</option>
+                            <option value="Two">Two</option>
+                            <option value="Three">Three</option>
                         </select>
-                    </div>
-                    <div class="col-1 text-end">                        
-                            <i class="bi bi-eye-fill fs-4" style="color: #007bff;"></i>
+                        <span id="eotClaimingStage_Error"></span>
 
                     </div>
-                    <div class="col-1 text-start">
-                        @*<button class="form-control btn btn-primary" id="lastDprDeliverable">*@
-                            <i class=" bi bi-download fs-4" style="color: #007bff;"></i>
-                        @*</button>*@
+                    <div class="col text-start">
+                       &nbsp;&nbsp;&nbsp; <i class="bi bi-eye-fill fs-4" style="color: #007bff;"></i> &nbsp;&nbsp;&nbsp; &nbsp;
+                        <i class=" bi bi-download fs-4" style="color: #007bff;"></i>
                     </div>
+                    <!--<div class="col text-start">-->
+                        @*<button class="form-control btn btn-primary" id="lastDprDeliverable">*@
+                        @*</button>*@
+                    <!--</div>-->
                 </div>
 
 
@@ -233,22 +249,22 @@
 
                 @* below div only represents labels of 3rd input rows *@
                 <div class="row mb-0">
-                    <div class="col-3 text-start align-content-md-end">
+                    <div class="col text-start align-content-md-end">
                         <label for="briefReason" class="form-label">
                             Delay From
                         </label>
                     </div>
-                    <div class="col-3 text-start align-content-md-end">
+                    <div class="col text-start align-content-md-end">
                         <label for="briefReason" class="form-label">
                             Delay To
                         </label>
                     </div>
-                    <div class="col-3 text-start align-content-md-end">
+                    <div class="col text-start align-content-md-end">
                         <label for="briefReason" class="form-label">
                             No. of Delay Days
                         </label>
                     </div>
-                    <div class="col-3 text-start">
+                    <div class="col text-start">
                         <label for="briefReason" class="form-label">
                             Number of Days Extension applied by Consultant
                         </label>
@@ -257,20 +273,22 @@
                 @* below div only represents inputs of 2nd input rows *@
 
                 <div class="row mb-5">
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="date" class="form-control" id="delayFrom" />
                         <span id="delayFrom_Error"></span>
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="date" class="form-control" id="delayTo" />
                         <span id="delayTo_Error"></span>
 
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" id="noofdelaydays" disabled />
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" id="noofdaysextension" />
+                        <span id="noofdaysextension_Error"></span>
+
                     </div>
                 </div>
 
@@ -324,10 +342,10 @@
                             </label>
 
                         </div>
-                        <div class="col-3">
-                            <div>
-                                <input type="date" placeholder="yyyy-mm-dd" class="form-control" id="dateOfNotice" />
-                            </div>
+                        <div class="col-3 text-start">
+                            <input type="date" placeholder="yyyy-mm-dd" class="form-control" id="dateOfNotice" />
+                            <span id="dateOfNotice_Error"></span>
+
                         </div>
 
                         <div class="col-2 text-start">
@@ -336,16 +354,16 @@
                             </label>
 
                         </div>
-                        <div class="col-3">
-                            <div>
-                                <input type="file" class="form-control" id="uploadNotice" />
-                            </div>
+                        <div class="col-3 text-start">
+                            <input type="file" class="form-control" id="uploadNotice" />
+                            <span id="uploadNotice_Error"></span>
+
                         </div>
                     </div>
                 </div>
 
                 <div class="row mb-4 ">
-                    <div class="col-5 text-start">
+                    <div class="col-6 text-start">
                         <label>
                             Is the DPR Consultant applicable for additional cost due to this delay
 
@@ -366,7 +384,7 @@
 
                 <div class="ifapplicableforcost">
                     <div class="row mb-4">
-                        <div class="col-3 text-start">
+                        <div class="col-4 text-start">
                             <label>
                                 Tentative Compensation Amount (in Cr.)
                             </label>
@@ -385,19 +403,19 @@
 
                 @* below div only represents labels of 2nd input rows *@
                 <div class="row mb-1">
-                    <div class="col-3 align-content-md-end text-start">
+                    <div class="col align-content-md-end text-start">
                         Relevant Clause No. as per Contract
 
                     </div>
-                    <div class="col-3 align-content-md-end text-start">
+                    <div class="col align-content-md-end text-start">
                         EOT No.
 
                     </div>
-                    <div class="col-3 align-content-md-end text-start">
+                    <div class="col align-content-md-end text-start">
                         Upload Detailed Proposal with justification   
 
                     </div>
-                    <div class="col-3 align-content-md-end text-start">
+                    <div class="col align-content-md-end text-start">
                         Application Date
 
                     </div>
@@ -405,17 +423,17 @@
                 @* below div only represents inputs of 2nd input rows *@
 
                 <div class="row mb-3 justify-content-start">
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" id="clause_no" />
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" id="eot_no" disabled />
 
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="file" class="form-control" id="detailed_proposal" />
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" style="text-align: center;" id="application_date" disabled />
 
 
@@ -428,13 +446,13 @@
 
                     <div class="col-1">
                         <div>
-                            <button type="button" id="submitBtn" class="btn btn-danger">Cancel</button>
+                            <button type="reset" id="submitBtn" class="btn btn-danger">Cancel</button>
 
                         </div>
                     </div>
                     <div class="col-1">
                         <div>
-                            <button type="button" id="submitBtn" class="btn btn-primary">Submit</button>
+                            <button type="button" id="submitBtn" class="btn btn-primary" disabled>Submit</button>
                         </div>
                     </div>
                 </div>
@@ -452,6 +470,7 @@
 
 <script>
     $(document).ready(function () {
+        var isValid = false;
         var getroleId = localStorage.getItem("role_id");
 
         if (getroleId == null || getroleId != 2) {
@@ -600,7 +619,179 @@
             }
             //alert("Whose default called"+ $("#whoseDefault").val());
         });
+
+        $("#eotDueTo").change(function () {
+            console.log($("#eotDueTo").val());
+
+            if ($("#eotDueTo").val() == 0) {
+                $("#eotDueTo_Error").html("Please Select Whose default")
+                $("#eotDueTo_Error").addClass("invalid");
+            }
+            else if ($("#eotDueTo").val() == 4) {
+                $("#eotDueTo_Error").html("")
+                $("#eotDueTo_Error").removeClass("invalid");
+                $(".eotDueToOtherReasonDiv").show();
+
+            }
+            else {
+                $("#eotDueTo_Error").html("")
+                $("#eotDueTo_Error").removeClass("invalid");
+                $(".eotDueToOtherReasonDiv").hide();
+
+            }
+
+
+        });
+        $("#eotDueTo").blur(function () {
+           
+            if ($("#eotDueTo").val() == 0) {
+                $("#eotDueTo_Error").html("Please Select EOT Due to ")
+                $("#eotDueTo_Error").addClass("invalid");
+            }
+            //else if ($("#eotDueTo").val() == 4) {
+            //    $("#eotDueTo_Error").html("")
+            //    $("#eotDueTo_Error").removeClass("invalid");
+            //}
+            else {
+                $("#eotDueTo_Error").html("")
+                $("#eotDueTo_Error").removeClass("invalid");
+                //$(".eotDueToOtherReasonDiv").hide();
+
+            }
+
+
+        });
+
+
+        $("#eotDueToOtherReason").blur(function () {
+            console.log("eot due to : ", $("#eotDueTo").val())
+            if ($("#eotDueTo").val()!==4 && $("#eotDueToOtherReason").val().trim() == "") {
+                $("#eotDueToOtherReason_Error").html("Please Enter Other Reason else select another reason")
+                $("#eotDueToOtherReason_Error").addClass("invalid");
+            }
+            else {
+                $("#eotDueToOtherReason_Error").html("")
+                $("#eotDueToOtherReason_Error").removeClass("invalid");
+            }
+        });
+
+        $("#eotClaimingStage").blur(function () {
+            //console.log("eot due to : ", $("#eotDueTo").val())
+            if ($("#eotClaimingStage").val() == 0 ) {
+                $("#eotClaimingStage_Error").html("Please Select EOT Claiming for stage")
+                $("#eotClaimingStage_Error").addClass("invalid");
+            }
+            else {
+                $("#eotClaimingStage_Error").html("")
+                $("#eotClaimingStage_Error").removeClass("invalid");
+            }
+        });
+
+
+        $("#eotClaimingStage").change(function () {
+            //console.log("eot due to : ", $("#eotDueTo").val())
+            if ($("#eotClaimingStage").val() == 0) {
+                $("#eotClaimingStage_Error").html("Please Select EOT Claiming for stage")
+                $("#eotClaimingStage_Error").addClass("invalid");
+            }
+            else {
+                $("#eotClaimingStage_Error").html("")
+                $("#eotClaimingStage_Error").removeClass("invalid");
+            }
+        });
+
+        $("#delayFrom").blur(function () {
+            //console.log($("#delayFrom").val());
+            //alert($("#delayFrom").val());
+
+            if ($("#delayFrom").val() == "") {
+                $("#delayFrom_Error").html("Please Enter Delay From Date")
+                $("#delayFrom_Error").addClass("invalid");
+            }
+            else {
+                $("#delayFrom_Error").html("")
+                $("#delayFrom_Error").removeClass("invalid");
+            }
+
+        })
+
+
+        $("#delayTo").blur(function () {
+            console.log($("#delayTo").val());
+            //alert($("#delayFrom").val());
+
+            if ($("#delayTo").val() == "") {
+                $("#delayTo_Error").html("Please Enter Delay To Date")
+                $("#delayTo_Error").addClass("invalid");
+            }
+            else {
+                $("#delayTo_Error").html("")
+                $("#delayTo_Error").removeClass("invalid");
+            }
+
+        });
+
+
+        $("#dateOfNotice").blur(function () {
+            //console.log($("#delayTo").val());
+            //alert($("#delayFrom").val());
+
+            if ($("#dateOfNotice").val() == "") {
+                $("#dateOfNotice_Error").html("Please Enter Date of notice")
+                $("#dateOfNotice_Error").addClass("invalid");
+            }
+            else {
+                $("#dateOfNotice_Error").html("")
+                $("dateOfNotice_Error").removeClass("invalid");
+            }
+
+        });
+
+        $('#noofdaysextension').keyup(function () {
+            this.value = this.value.replace(/[^0-9\.]/g, '');
+        });
+        $('#noofdaysextension').blur(function () {
+            if ($("#noofdaysextension").val().trim() == "") {
+                $("#noofdaysextension_Error").html("Please Enter Number Of Days extension")
+                $("#noofdaysextension_Error").addClass("invalid");
+            }
+            else {
+                $("#noofdaysextension_Error").html("")
+                $("#noofdaysextension_Error").removeClass("invalid");
+            }
+        });
+
+        $('#uploadNotice').focusout(function () {
+            //debugger;
+            console.log("upload file : ", $('#uploadNotice')[0].files.length);
+
+            if ($('#uploadNotice')[0].files.length == 1) {
+                $("#uploadNotice_Error").html("")
+                    $("#uploadNotice_Error").removeClass("invalid");
+            }
+
+         else if ($('#uploadNotice')[0].files.length == 0) {
+                $("#uploadNotice_Error").html("Please upload notice")
+                    $("#uploadNotice_Error").addClass("invalid");
+            }
+        });
+        $('#uploadNotice').change(function () {
+            //debugger;
+            console.log("upload file : ", $('#uploadNotice')[0].files.length);
+
+            if ($('#uploadNotice')[0].files.length == 1) {
+                $("#uploadNotice_Error").html("")
+                $("#uploadNotice_Error").removeClass("invalid");
+            }
+
+            else if ($('#uploadNotice')[0].files.length == 0) {
+                $("#uploadNotice_Error").html("Please upload notice")
+                $("#uploadNotice_Error").addClass("invalid");
+            }
+        });
+
         
+
     });
 </script>
 
