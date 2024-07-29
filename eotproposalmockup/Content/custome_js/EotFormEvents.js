@@ -1,27 +1,5 @@
 ﻿
 
-//layout change events
-$(".is_advance_notice").change(function () {
-    var is_advance_notice_val = $('input[name="is_advance_notice"]:checked').val();
-
-    if (is_advance_notice_val == "Yes") {
-        $('.ifNoticegiven').show();
-    }
-    else {
-        $('.ifNoticegiven').hide();
-    }
-});
-$(".is_additionalCost").change(function () {
-    var is_additionalCost = $('input[name="is_additionalCost"]:checked').val();
-
-    if (is_additionalCost == "Yes") {
-        $('.ifapplicableforcost').show();
-    }
-    else {
-        $('.ifapplicableforcost').hide();
-    }
-
-});
 
 
 //all events
@@ -33,11 +11,43 @@ var isEotClaimingStageValid = false;
 var isDelayFromValid = false;
 var isDelayToValid = false;
 var isnoofdaysextensionValid = false;
-var isdateofnoticeValid = false;
-var isuploadnoticeValid = false;
-var iscompensationamountValid = false;
+
+var isdateofnoticeValid = true;
+var isuploadnoticeValid = true;
+var iscompensationamountValid = true;
 var isClausNoValid = false;
 var isDetailedProposalValid = false;
+
+
+
+//layout change events
+$(".is_advance_notice").change(function () {
+    var is_advance_notice_val = $('input[name="is_advance_notice"]:checked').val();
+
+    if (is_advance_notice_val == "Yes") {
+        isdateofnoticeValid = false;
+        isuploadnoticeValid = false;
+        $('.ifNoticegiven').show();
+    }
+    else {
+        isdateofnoticeValid = true;
+        isuploadnoticeValid = true;
+        $('.ifNoticegiven').hide();
+    }
+});
+$(".is_additionalCost").change(function () {
+    var is_additionalCost = $('input[name="is_additionalCost"]:checked').val();
+
+    if (is_additionalCost == "Yes") {
+        iscompensationamountValid = false;
+        $('.ifapplicableforcost').show();
+    }
+    else {
+        iscompensationamountValid = true;
+        $('.ifapplicableforcost').hide();
+    }
+
+});
 $("#briefReason").blur(function () {
     if ($("#briefReason").val().trim() == "") {
         $("#briefReason_Error").html("Please Enter Brief Reason")
@@ -49,9 +59,9 @@ $("#briefReason").blur(function () {
         $("#briefReason_Error").html("")
         $("#briefReason_Error").removeClass("invalid");
         isBriefReasonValid = true;
-
+        debugger;
         $("#submitBtn").prop("disabled", !isAllFieldsValid());
-
+        debugger;
         //if (isAllFieldsValid()) {
         //    $('#submitBtn').removeAttr('disabled');
 
@@ -80,6 +90,7 @@ $("#whoseDefault").blur(function () {
     }
     else {
         isWhoseDefaultValid = true;
+        debugger;
         $("#whoseDefault_Error").html("")
         $("#whoseDefault_Error").removeClass("invalid");
         $("#submitBtn").prop("disabled", !isAllFieldsValid());
@@ -290,6 +301,7 @@ $("#delayTo").on("change", function () {
         $("#delayTo_Error").html("")
         $("#delayFrom_Error").html("")
         isDelayToValid = true;
+        $("#submitBtn").prop("disabled", !isAllFieldsValid());
 
     }
 
@@ -311,7 +323,7 @@ $("#delayTo").on("blur", function () {
     if ($("#delayTo").val() == "") {
         $("#delayTo_Error").html("Please Enter Delay To Date")
         $("#delayTo_Error").addClass("invalid");
-        isDelayToValid = true;
+        isDelayToValid = false;
         $("#submitBtn").prop("disabled", !isAllFieldsValid());
 
         //if (isAllFieldsValid()) {
@@ -323,9 +335,10 @@ $("#delayTo").on("blur", function () {
         //}
     }
     else {
-        isDelayToValid = false;
+        isDelayToValid = true;
         $("#delayTo_Error").html("")
         $("#delayTo_Error").removeClass("invalid");
+        $("#submitBtn").prop("disabled", !isAllFieldsValid());
     }
 })
 
@@ -461,15 +474,18 @@ $('#detailed_proposal').on("change focusout", function () {
     if ($('#detailed_proposal')[0].files.length == 1) {
         $("#detailed_proposal_Error").html("")
         $("#detailed_proposal_Error").removeClass("invalid");
-        isDetailedProposalValid = false;
+        debugger;
+        isDetailedProposalValid = true;
+        $("#submitBtn").prop("disabled", !isAllFieldsValid());
+
+   
     }
 
     else if ($('#detailed_proposal')[0].files.length == 0) {
         $("#detailed_proposal_Error").html("Please upload Detailed Proposol Justification")
         $("#detailed_proposal_Error").addClass("invalid");
-        isDetailedProposalValid = true;
-        $("#submitBtn").prop("disabled", !isAllFieldsValid());
-
+        isDetailedProposalValid = false;
+        
         //if (isAllFieldsValid()) {
         //    $('#submitBtn').removeAttr('disabled');
 
@@ -480,10 +496,25 @@ $('#detailed_proposal').on("change focusout", function () {
     }
 });
 
+$("#submitBtn").click(function () {
+
+    //alert("clicked");
+
+    if (!isAllFieldsValid()) {
+        return false;
+        console.log("SW");
+    }
+    else {
+        alert("lets call a api to add the EOT");
+    }
+
+
+});
+
 
 
 function isAllFieldsValid() {
-
+    debugger;
     if (isBriefReasonValid &&
         isWhoseDefaultValid &&
         isEotDueToValid &&
