@@ -1,166 +1,51 @@
-﻿@*<div>
-        <center> <h2>Extension Of Time - DPR Consultant</h2></center>
-        <hr />
-
-
-
-        <br />
-        <div class="container text-center">
-            <form>
-
-                <div class="row mb-4">
-                    <div class="col-2">
-                        <label for="briefReason" class="form-label">
-                            Brief Reason for EOT
-                        </label>
-                    </div>
-                    <div class="col-10">
-                    <textarea class="form-control" rows=2 id="floatingTextarea2"></textarea>
-                    </div>
-                    </div>
-
-                <div class="row mb-4">
-                    <div class="col-3">
-                            <label class="form-label">
-                                EOT Claiming on whose default
-                            </label>
-
-
-                        <select class="form-select" aria-label="Size 3 select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">
-                            EOT Due To
-                        </label>
-
-                        <select class="form-select" aria-label="Size 3 select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-
-
-
-                    <div class="col-3">
-                        <label class="form-label">
-
-                            EOT claiming for Stage
-
-                        </label>
-
-                        <select class="form-select" aria-label="Size 3 select example">
-                            <option selected>Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">
-                            Last DPR Deliverable
-                        </label>
-
-                        <button class="form-control">
-                            <i class="bi bi-eye"></i>  &nbsp; & &nbsp;
-                            <a href="download">download</a>
-
-                        </button>
-
-                    </div>
-                </div>
-
-
-                <div class="row mb-4">
-                    <div class="col-3">
-                        <label class="form-label">
-                            Delay From
-                        </label>
-                        <input type="date" class="form-control" id="start From" />
-
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">
-                            Delay To
-                        </label>
-                        <input type="date" class="form-control" id="start From" />
-
-                    </div>
-
-
-
-                    <div class="col-3">
-                        <label class="form-label">
-                            No. of Delay Days
-                        </label>
-                        <input type="text" class="form-control" id="days_delay" disabled />
-
-
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">
-                            Number of Days Extension applied by Consultant
-                        </label>
-                        <input type="text" class="form-control" id="days_delay" />
-
-
-                    </div>
-                </div>
-
-
-            </form>
-        </div>
-
-
-    </div>*@
-
 <style>
     .formDiv {
-        border: 1px solid black;
+        border: 4px solid black;
         padding: 20px;
         margin: 20px;
         min-height: 500px;
+        border-radius: 50px;
     }
 
     .ifNoticegiven, .ifapplicableforcost {
         display: none;
     }
+
     .invalid {
         color: red;
         /*display:none;*/
     }
+
+    .eotDueToOtherReasonDiv {
+        display: none;
+    }
 </style>
 
 <div>
-
-
     <div class="formDiv">
         <center> <h2>Extension Of Time - DPR Consultant</h2></center>
         <hr />
-
         <br />
         <div class="container text-center">
             <form>
-
+                @* Below div is defines Brief Reason for EOT label and textarea *@
                 <div class="row mb-4">
-                    <div class="col-2 text-start">
+                    <div class="col text-start">
                         <label for="briefReasonLabel" class="text-left">
                             Brief Reason for EOT
                         </label>
                     </div>
-                    <div class="col-10">
+                    <div class="col-10 text-start">
                         <textarea class="form-control" rows=2 id="briefReason"></textarea>
                         <span class="text-start" id="briefReason_Error"></span>
                     </div>
                 </div>
 
-                @* below div only represents labels of 2nd input rows *@
+                @* below div represents  labels for
+                    EOT Claiming on whose default
+                    EOT Due To --- >  Others ----> reason for choosing others
+                    EOT claiming for Stage
+                    Last DPR Deliverable *@
                 <div class="row mb-1">
                     <div class="col align-content-md-end text-start">
                         <label for="briefReason" class="form-label text-left">
@@ -168,8 +53,12 @@
                         </label>
                     </div>
                     <div class="col align-content-md-end text-start">
-                        <label for="briefReason" class="form-label text-left">
                             EOT Due To
+                        </label>
+                    </div>
+                    <div class="eotDueToOtherReasonDiv col align-content-md-end text-start">
+                        <label for="briefReason" class="form-label text-left">
+                            Enter Other Reason
                         </label>
                     </div>
                     <div class="col align-content-md-end text-start">
@@ -177,104 +66,124 @@
                             EOT claiming for Stage
                         </label>
                     </div>
-                    <div class="col-2 align-content-md-end text-start">
+                    <div class="col align-content-md-end text-start">
                         <label for="briefReason" class="form-label text-left">
                             Last DPR Deliverable
                         </label>
                     </div>
                 </div>
 
-                @* below div only represents inputs of 2nd input rows *@
+                @* below div represents select tag  view icon and download icon
+                    EOT Claiming on whose default
+                    EOT Due To --- >  Others ----> reason for choosing others
+                    EOT claiming for Stage
+                    Last DPR Deliverable *@
 
                 <div class="row mb-3">
-                    <div class="col">
+                    <div class="col text-start">
                         <select class="form-select" id="whoseDefault">
-                            <option selected>Select Claiming Default</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option selected value="0">Select Claiming Default</option>
+
                         </select>
+                        <span id="whoseDefault_Error"></span>
+
                     </div>
-                    <div class="col">
+                    <div class="col text-start">
                         <select class="form-select" id="eotDueTo">
-                            <option selected>Select EOT Due To</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="0" selected>Select EOT Due To</option>
+                            <option value="Due to Reason 1">Due to Reason 1</option>
+                            <option value="Due to Reason 2">Due to Reason 2</option>
+                            <option value="Due to Reason 3">Due to Reason 3</option>
+                            <option value="4">Other</option>
+
                         </select>
+                        <span id="eotDueTo_Error"></span>
+
                     </div>
 
-                    @*<div class="col">
-                        <input type="text" class="form-control" />
-                    </div>*@
-                    <div class="col">
+                    <div class="eotDueToOtherReasonDiv col text-start">
+                        <input type="text" class="form-control" id="eotDueToOtherReason" />
+                        <span id="eotDueToOtherReason_Error"></span>
+
+                    </div>
+                    <div class="col text-start">
                         <select class="form-select" id="eotClaimingStage">
-                            <option selected>Select EOT Claiming for stage</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="0" selected>Select EOT Claiming for stage</option>
+                            <option value="One">One</option>
+                            <option value="Two">Two</option>
+                            <option value="Three">Three</option>
                         </select>
-                    </div>
-                    <div class="col-1 text-end">                        
-                            <i class="bi bi-eye-fill fs-4" style="color: #007bff;"></i>
+                        <span id="eotClaimingStage_Error"></span>
 
                     </div>
-                    <div class="col-1 text-start">
-                        @*<button class="form-control btn btn-primary" id="lastDprDeliverable">*@
-                            <i class=" bi bi-download fs-4" style="color: #007bff;"></i>
-                        @*</button>*@
+                    <div class="col text-start">
+                        &nbsp;&nbsp;&nbsp; <i class="bi bi-eye-fill fs-4" style="color: #007bff;"></i> &nbsp;&nbsp;&nbsp; &nbsp;
+                        <i class=" bi bi-download fs-4" style="color: #007bff;"></i>
                     </div>
+                    <!--<div class="col text-start">-->
+                    @*<button class="form-control btn btn-primary" id="lastDprDeliverable">*@
+                    @*</button>*@
+                    <!--</div>-->
                 </div>
 
 
 
-
-
-                @* below div only represents labels of 3rd input rows *@
+                @* below div represents labels for
+                    Delay From
+                    Delay To
+                    No. of Delay Days
+                    Number of Days Extension applied by Consultant*@
                 <div class="row mb-0">
-                    <div class="col-3 text-start align-content-md-end">
+                    <div class="col text-start align-content-md-end">
                         <label for="briefReason" class="form-label">
                             Delay From
                         </label>
                     </div>
-                    <div class="col-3 text-start align-content-md-end">
+                    <div class="col text-start align-content-md-end">
                         <label for="briefReason" class="form-label">
                             Delay To
                         </label>
                     </div>
-                    <div class="col-3 text-start align-content-md-end">
+                    <div class="col text-start align-content-md-end">
                         <label for="briefReason" class="form-label">
                             No. of Delay Days
                         </label>
                     </div>
-                    <div class="col-3 text-start">
+                    <div class="col text-start">
                         <label for="briefReason" class="form-label">
                             Number of Days Extension applied by Consultant
                         </label>
                     </div>
                 </div>
-                @* below div only represents inputs of 2nd input rows *@
 
+
+                @* below div represents date picker, textbox
+                    Delay From
+                    Delay To
+                    No. of Delay Days
+                    Number of Days Extension applied by Consultant*@
                 <div class="row mb-5">
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="date" class="form-control" id="delayFrom" />
                         <span id="delayFrom_Error"></span>
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="date" class="form-control" id="delayTo" />
                         <span id="delayTo_Error"></span>
 
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" id="noofdelaydays" disabled />
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" id="noofdaysextension" />
+                        <span id="noofdaysextension_Error"></span>
+
                     </div>
                 </div>
 
 
-
+                @* below div represents label : Will you be able to absorb the delay and YES NO Radio Button*@
                 <div class="row mb-4">
                     <div class="col-4 text-start">
                         <label>
@@ -294,6 +203,8 @@
                     </div>
                 </div>
 
+
+                @* below div represents label : Is advance Notice given to NHIDCL for Delay and YES NO Radio Button*@
 
                 <div class="row mb-4">
                     <div class="col-4 text-start">
@@ -315,6 +226,10 @@
                     </div>
                 </div>
 
+                @* if above notice given radio button is yes then below two fields will open
+                            Date of Notice  -- > label and date picker
+                    Upload Notice ---> input type file
+                *@
                 <div class="ifNoticegiven">
                     <div class="row mb-4 justify-content-start">
                         <div class="col-2 text-start">
@@ -323,10 +238,10 @@
                             </label>
 
                         </div>
-                        <div class="col-3">
-                            <div>
-                                <input type="date" placeholder="yyyy-mm-dd" class="form-control" id="dateOfNotice" />
-                            </div>
+                        <div class="col-3 text-start">
+                            <input type="date" placeholder="yyyy-mm-dd" class="form-control" id="dateOfNotice" />
+                            <span id="dateOfNotice_Error"></span>
+
                         </div>
 
                         <div class="col-2 text-start">
@@ -335,16 +250,20 @@
                             </label>
 
                         </div>
-                        <div class="col-3">
-                            <div>
-                                <input type="file" class="form-control" id="uploadNotice" />
-                            </div>
+                        <div class="col-3 text-start">
+                            <input type="file" class="form-control" id="uploadNotice" />
+                            <span id="uploadNotice_Error"></span>
+
                         </div>
                     </div>
                 </div>
 
+
+                @* below div represents label : Is the DPR Consultant applicable for additional cost due to this delay
+                    and YES NO Radio Button  *@
+
                 <div class="row mb-4 ">
-                    <div class="col-5 text-start">
+                    <div class="col-6 text-start">
                         <label>
                             Is the DPR Consultant applicable for additional cost due to this delay
 
@@ -363,18 +282,22 @@
                     </div>
                 </div>
 
+                @* if above radio button is YES Then below Textbox will apear
+                    label and textbox  for :Tentative Compensation Amount (in Cr.)
+                *@
+
+
                 <div class="ifapplicableforcost">
                     <div class="row mb-4">
-                        <div class="col-3 text-start">
+                        <div class="col-4 text-start">
                             <label>
                                 Tentative Compensation Amount (in Cr.)
                             </label>
 
                         </div>
                         <div class="col-3 text-start">
-                            <div>
-                                <input class="form-control" type="text" id="compensation_amount">
-                            </div>
+                            <input class="form-control" type="text" id="compensation_amount">
+                            <span id="compensation_amount_Error"></span>
                         </div>
 
 
@@ -382,39 +305,53 @@
 
                 </div>
 
-                @* below div only represents labels of 2nd input rows *@
+
+
+                @* below div represents labels
+                    Relevant Clause No. as per Contract
+                    EOT No.
+                    Upload Detailed Proposal with justification
+                    Application Date *@
                 <div class="row mb-1">
-                    <div class="col-3 align-content-md-end text-start">
+                    <div class="col align-content-md-end text-start">
                         Relevant Clause No. as per Contract
 
                     </div>
-                    <div class="col-3 align-content-md-end text-start">
+                    <div class="col align-content-md-end text-start">
                         EOT No.
 
                     </div>
-                    <div class="col-3 align-content-md-end text-start">
+                    <div class="col align-content-md-end text-start">
                         Upload Detailed Proposal with justification   
 
                     </div>
-                    <div class="col-3 align-content-md-end text-start">
+                    <div class="col align-content-md-end text-start">
                         Application Date
 
                     </div>
                 </div>
-                @* below div only represents inputs of 2nd input rows *@
 
+                @* below div represents textbox , file upload auto filling EOT NO  and todays date default
+                    Relevant Clause No. as per Contract
+                    EOT No.
+                    Upload Detailed Proposal with justification
+                    Application Date *@
                 <div class="row mb-3 justify-content-start">
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" id="clause_no" />
+                        <span id="clause_no_Error"></span>
+
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" id="eot_no" disabled />
 
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="file" class="form-control" id="detailed_proposal" />
+                        <span id="detailed_proposal_Error"></span>
+
                     </div>
-                    <div class="col-3">
+                    <div class="col text-start">
                         <input type="text" class="form-control" style="text-align: center;" id="application_date" disabled />
 
 
@@ -423,17 +360,18 @@
                 </div>
 
 
+                @* submit and reset option *@
                 <div class="row mb-4 justify-content-end">
 
                     <div class="col-1">
                         <div>
-                            <button type="button" id="submitBtn" class="btn btn-danger">Cancel</button>
+                            <button type="reset" id="resetBtn" class="btn btn-danger">Cancel</button>
 
                         </div>
                     </div>
                     <div class="col-1">
                         <div>
-                            <button type="button" id="submitBtn" class="btn btn-primary">Submit</button>
+                            <button type="button" id="submitBtn" class="btn btn-primary" disabled>Submit</button>
                         </div>
                     </div>
                 </div>
@@ -448,115 +386,13 @@
 
 
 
+<script src="~/Content/custome_js/EOTForm_Apis.js"></script>
+<script src="~/Content/custome_js/DateCustomeFunctions.js"></script>
+<script src="~/Content/custome_js/EotFormEvents.js"></script>
 
 <script>
     $(document).ready(function () {
-        var getroleId = localStorage.getItem("role_id");
-
-        if (getroleId == null || getroleId != 2) {
-            window.location.href = "/";
-        }
-        const today = new Date();
-        const yyyy = today.getFullYear();
-        let mm = today.getMonth() + 1; // Months start at 0!
-        let dd = today.getDate();
-
-        if (dd < 10) dd = '0' + dd;
-        if (mm < 10) mm = '0' + mm;
-
-        const formattedToday = dd + '/' + mm + '/' + yyyy;
-
-        $("#application_date").val(formattedToday);
-
-        $(".is_advance_notice").change(function () {
-            var is_advance_notice_val = $('input[name="is_advance_notice"]:checked').val();
-
-            if (is_advance_notice_val == "Yes") {
-                $('.ifNoticegiven').show();
-            }
-            else {
-                $('.ifNoticegiven').hide();
-            }
-            
-            //alert("The text has been changed."+ is_advance_notice_val);
-        });
-        $(".is_additionalCost").change(function () {
-            var is_additionalCost = $('input[name="is_additionalCost"]:checked').val();
-
-     if (is_additionalCost == "Yes") {
-         $('.ifapplicableforcost').show();
-     }
-     else {
-         $('.ifapplicableforcost').hide();
-     }
-     
-        });
-        $("#delayTo").change(function () {
-            let delayFrom = new Date($("#delayFrom").val());
-            let delayTo = new Date($("#delayTo").val());
-
-            console.log("delayFrom", delayFrom);
-
-            if (delayFrom == "Invalid Date") {
-                $("#delayFrom_Error").html("Please enter a valid delay from")
-                $("#delayFrom_Error").addClass("invalid");
-                $("#noofdelaydays").val("");
-                $("#delayTo").val("");
-                $("#delayFrom").val("");
-                return;
-            }
-            else {
-                $("#delayFrom_Error").html("")
-                $("#delayTo_Error").html("")
-
-            }
-
-            if (delayFrom > delayTo) {
-          
-                $("#delayTo_Error").html("Please Enter valid date")
-                $("#delayTo_Error").addClass("invalid");
-                $("#noofdelaydays").val("");
-                $("#delayTo").val("");
-                $("#delayFrom").val("");
-                return;
-            }
-            else {
-                $("#delayTo_Error").html("")
-                $("#delayFrom_Error").html("")
-
-            }
-
-            let Difference_In_Time =
-                delayTo.getTime() - delayFrom.getTime();
-
-            let Difference_In_Days =
-                Math.round
-                    (Difference_In_Time / (1000 * 3600 * 24));
-
-            $("#noofdelaydays").val(Difference_In_Days);
-
-        });
-
-
-        $("#briefReason").blur(function () {
-
-            if ($("#briefReason").val().trim() == "") {
-                $("#briefReason_Error").html("Please Enter Brief Reason")
-                $("#briefReason_Error").addClass("invalid");
-
-                return;
-            }
-            else {
-                $("#briefReason_Error").html("")
-                $("#briefReason_Error").removeClass("invalid");
-
-            }
-            console.log($("#briefReason").val().trim());
-            console.log($("#briefReason").val().trim().length);
-
-        })
-
-        
+        $("#application_date").val(getTodaysDate());
     });
 </script>
 
