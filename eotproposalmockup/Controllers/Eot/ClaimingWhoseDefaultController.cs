@@ -49,7 +49,7 @@ namespace eotproposalmockup.Controllers.Eot
             }
             catch (Exception ex)
             {
-                return Json(new { status = false, message = "Something went wrong" },JsonRequestBehavior.AllowGet);
+                return Json(new { status = false, message = ex.Message },JsonRequestBehavior.AllowGet);
             }
             if (whosedefaultlst.Count > 0)
             {

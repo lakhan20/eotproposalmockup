@@ -47,26 +47,27 @@
                     EOT claiming for Stage
                     Last DPR Deliverable *@
                 <div class="row mb-1">
-                    <div class="col align-content-md-end text-start">
+                    <div class="col  text-start">
                         <label for="briefReason" class="form-label text-left">
                             EOT Claiming on whose default
                         </label>
                     </div>
-                    <div class="col align-content-md-end text-start">
+                    <div class="col  text-start">
+                        <label>
                             EOT Due To
                         </label>
                     </div>
-                    <div class="eotDueToOtherReasonDiv col align-content-md-end text-start">
+                    <div class="eotDueToOtherReasonDiv col  text-start">
                         <label for="briefReason" class="form-label text-left">
                             Enter Other Reason
                         </label>
                     </div>
-                    <div class="col align-content-md-end text-start">
+                    <div class="col  text-start">
                         <label for="briefReason" class="form-label text-left">
                             EOT claiming for Stage
                         </label>
                     </div>
-                    <div class="col align-content-md-end text-start">
+                    <div class="col  text-start">
                         <label for="briefReason" class="form-label text-left">
                             Last DPR Deliverable
                         </label>
@@ -134,17 +135,17 @@
                     No. of Delay Days
                     Number of Days Extension applied by Consultant*@
                 <div class="row mb-0">
-                    <div class="col text-start align-content-md-end">
+                    <div class="col text-start">
                         <label for="briefReason" class="form-label">
                             Delay From
                         </label>
                     </div>
-                    <div class="col text-start align-content-md-end">
+                    <div class="col text-start ">
                         <label for="briefReason" class="form-label">
                             Delay To
                         </label>
                     </div>
-                    <div class="col text-start align-content-md-end">
+                    <div class="col text-start ">
                         <label for="briefReason" class="form-label">
                             No. of Delay Days
                         </label>
@@ -193,12 +194,12 @@
                     </div>
                     <div class="col-1 text-start">
                         <div>
-                            <input class="form-check-input" type="radio" name="is_absorb_delay" id="is_absorb_delay" value="Yes" aria-label="...">Yes
+                            <input class="is_absorb_delay form-check-input" type="radio" name="is_absorb_delay" id="is_absorb_delay" value="Yes" aria-label="...">Yes
                         </div>
                     </div>
                     <div class="col-1 text-start">
                         <div>
-                            <input class="form-check-input" type="radio" name="is_absorb_delay" id="is_absorb_delay" value="No" aria-label="..." checked="checked">No
+                            <input class="is_absorb_delay form-check-input" type="radio" name="is_absorb_delay" id="is_absorb_delay" value="No" aria-label="..." checked="checked">No
                         </div>
                     </div>
                 </div>
@@ -232,25 +233,25 @@
                 *@
                 <div class="ifNoticegiven">
                     <div class="row mb-4 justify-content-start">
-                        <div class="col-2 text-start">
+                        <div class="col text-start">
                             <label>
                                 Date of Notice
                             </label>
 
                         </div>
-                        <div class="col-3 text-start">
+                        <div class="col text-start">
                             <input type="date" placeholder="yyyy-mm-dd" class="form-control" id="dateOfNotice" />
                             <span id="dateOfNotice_Error"></span>
 
                         </div>
 
-                        <div class="col-2 text-start">
+                        <div class="col text-start">
                             <label>
                                 Upload Notice
                             </label>
 
                         </div>
-                        <div class="col-3 text-start">
+                        <div class="col text-start">
                             <input type="file" class="form-control" id="uploadNotice" />
                             <span id="uploadNotice_Error"></span>
 
@@ -263,7 +264,7 @@
                     and YES NO Radio Button  *@
 
                 <div class="row mb-4 ">
-                    <div class="col-6 text-start">
+                    <div class="col-4 text-start">
                         <label>
                             Is the DPR Consultant applicable for additional cost due to this delay
 
@@ -295,7 +296,7 @@
                             </label>
 
                         </div>
-                        <div class="col-3 text-start">
+                        <div class="col-2 text-start">
                             <input class="form-control" type="text" id="compensation_amount">
                             <span id="compensation_amount_Error"></span>
                         </div>
@@ -313,19 +314,14 @@
                     Upload Detailed Proposal with justification
                     Application Date *@
                 <div class="row mb-1">
-                    <div class="col align-content-md-end text-start">
+                    <div class="col  text-start">
                         Relevant Clause No. as per Contract
 
                     </div>
-                    <div class="col align-content-md-end text-start">
-                        EOT No.
-
+                    <div class="col  text-start">
+                        Upload Detailed Proposal with justification
                     </div>
-                    <div class="col align-content-md-end text-start">
-                        Upload Detailed Proposal with justification   
-
-                    </div>
-                    <div class="col align-content-md-end text-start">
+                    <div class="col text-start">
                         Application Date
 
                     </div>
@@ -343,18 +339,12 @@
 
                     </div>
                     <div class="col text-start">
-                        <input type="text" class="form-control" id="eot_no" disabled />
-
-                    </div>
-                    <div class="col text-start">
                         <input type="file" class="form-control" id="detailed_proposal" />
                         <span id="detailed_proposal_Error"></span>
 
                     </div>
                     <div class="col text-start">
-                        <input type="text" class="form-control" style="text-align: center;" id="application_date" disabled />
-
-
+                        <input type="text" class="form-control" id="application_date" disabled />
 
                     </div>
                 </div>

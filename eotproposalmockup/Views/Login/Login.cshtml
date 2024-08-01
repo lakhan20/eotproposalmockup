@@ -51,6 +51,7 @@
                         alert(response.message);
                         //console.log("response : ", response);
                         localStorage.setItem("role_id", response.loginResponse.role_id);
+                        localStorage.setItem("user_id", response.loginResponse.user_id);
                         var url = "/UserHome/UserHomeView";
                         window.location.href = url;
 

@@ -21,7 +21,7 @@ namespace eotproposalmockup.Controllers.login
         public ActionResult LoginApi(LoginModel loginModel)
         {
             LoginResponse loginResponse = new LoginResponse();
-            int cnt = 0;
+         
             try
             {
                 _connection.Open();

@@ -59,9 +59,9 @@ $("#briefReason").blur(function () {
         $("#briefReason_Error").html("")
         $("#briefReason_Error").removeClass("invalid");
         isBriefReasonValid = true;
-        debugger;
+        //debugger;
         $("#submitBtn").prop("disabled", !isAllFieldsValid());
-        debugger;
+        //debugger;
         //if (isAllFieldsValid()) {
         //    $('#submitBtn').removeAttr('disabled');
 
@@ -90,7 +90,7 @@ $("#whoseDefault").blur(function () {
     }
     else {
         isWhoseDefaultValid = true;
-        debugger;
+        //debugger;
         $("#whoseDefault_Error").html("")
         $("#whoseDefault_Error").removeClass("invalid");
         $("#submitBtn").prop("disabled", !isAllFieldsValid());
@@ -103,6 +103,13 @@ $("#whoseDefault").blur(function () {
         //    $('#submitBtn').attr('disabled', "disabled");
         //}
     }
+});
+
+$("#delayFrom, #delayTo, #dateOfNotice").keypress(function (e) {
+    return false;
+});
+$("#delayFrom, #delayTo, #dateOfNotice").keydown(function (e) {
+    return false;
 });
 
 $("#eotDueTo").change(function () {
@@ -474,7 +481,7 @@ $('#detailed_proposal').on("change focusout", function () {
     if ($('#detailed_proposal')[0].files.length == 1) {
         $("#detailed_proposal_Error").html("")
         $("#detailed_proposal_Error").removeClass("invalid");
-        debugger;
+        //debugger
         isDetailedProposalValid = true;
         $("#submitBtn").prop("disabled", !isAllFieldsValid());
 
@@ -496,25 +503,10 @@ $('#detailed_proposal').on("change focusout", function () {
     }
 });
 
-$("#submitBtn").click(function () {
-
-    //alert("clicked");
-
-    if (!isAllFieldsValid()) {
-        return false;
-        console.log("SW");
-    }
-    else {
-        alert("lets call a api to add the EOT");
-    }
-
-
-});
-
 
 
 function isAllFieldsValid() {
-    debugger;
+    //debugger;
     if (isBriefReasonValid &&
         isWhoseDefaultValid &&
         isEotDueToValid &&

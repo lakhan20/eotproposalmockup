@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -167,17 +167,23 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Eot\AddEotFormController.cs" />
     <Compile Include="Controllers\Eot\ClaimingWhoseDefaultController.cs" />
     <Compile Include="Controllers\Eot\EotFormController.cs" />
+    <Compile Include="Controllers\Eot\EOTIdController.cs" />
+    <Compile Include="Controllers\GridDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\login\LoginController.cs" />
     <Compile Include="Controllers\UserHome\UserHomeController.cs" />
+    <Compile Include="CustomeValidation\MaxFileSizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddEotForm.cs" />
     <Compile Include="Models\claimingwhosedefault.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\LoginResponse.cs" />
+    <Compile Include="Models\ValidationError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -238,10 +244,17 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\UserHome\UserHomeView.cshtml" />
     <Content Include="Views\EotForm\EotForm.cshtml" />
+    <Content Include="Views\GridData\GridData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="detailedProposal\" />
+    <Folder Include="documents\detailedProposal\" />
+    <Folder Include="documents\notices\" />
+    <Folder Include="notices\" />
+    <Folder Include="Views\AddEotForm\" />
     <Folder Include="Views\ClaimingWhoseDefault\" />
+    <Folder Include="Views\EOTId\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
